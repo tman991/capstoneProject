@@ -7,7 +7,9 @@ app.use(express.json());
 app.use(cors());
 
 
-const { createData } = require('./controller.js')
+const { getFact, createData } = require('./controller.js')
+
+app.get("/getFact", getFact);
 
 app.post('/createData', createData)
 

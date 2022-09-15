@@ -1,11 +1,13 @@
 let form = document.querySelector("form")
 
+
 function sendData (event) {
 event.preventDefault()
 const nameInput = document.getElementById("name")
 const destinationInput = document.getElementById('destination')
 const budgetInput = document.getElementById('budget')
 const thingsInput = document.getElementById('thingsToDo') 
+
 
 let body = { 
 
@@ -15,23 +17,23 @@ budgetValue: budgetInput.value,
 thingsValue: thingsInput.value
 
     }
-
+   
     axios.post('http://localhost:4005/createData', body)
     .then((res) => { 
+        
+        
         console.log(res.data)
-        for (let i = 0; i < res.data.length; i++){
 
         const displayResultSection = document.getElementById('displayResult')
         const infoCard = document.createElement('div')
+        infoCard.classList.add('info')
         infoCard.innerHTML = `
-        <h2> Name: ${res.data[i].nameValue} </h2>
-        <h2> Destination: ${res.data[i].destinationValue} </h2>
-        <h2> Budget: ${res.data[i].budgetValue} </h2>
-        <h2> Things: ${res.data[i].thingsValue} </h2>
+        <h2> Name: ${res.data.nameValue} </h2>
+        <h2> Destination: ${res.data.destinationValue} </h2>
+        <h2> Budget: ${res.data.budgetValue} </h2>
+        <h2> Things: ${res.data.thingsValue} </h2>
         `
         displayResultSection.appendChild(infoCard)
-         
-        }
 
         
     })
@@ -41,3 +43,16 @@ thingsValue: thingsInput.value
 }
 
 form.addEventListener('submit', sendData)
+
+
+const factBtn = document.getElementById("funFactButton")
+
+const getFact = () => {
+    axios.get('http://localhost:4005/getFact')
+        .then(res => {
+            const data = res.data;
+            alert(data);
+    });
+};
+
+factBtn.addEventListener('click', getFact)

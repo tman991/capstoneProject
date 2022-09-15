@@ -1,0 +1,42 @@
+
+body {
+    background-image: url("https://images-na.ssl-images-amazon.com/images/S/pv-target-images/c6e2969e0ce366c47e252cb0f59dc745938a749a4c5773008c0d72bf205350d4._RI_.jpg");
+    background-repeat: no-repeat;    
+    background-size: cover;
+}
+
+        
+ .info { 
+    color: rgb(245, 15, 15);
+    
+ } 
+    
+form {
+    font-size: 1.25em;
+    padding: - .25em;
+    color: rgb(10, 9, 9);
+}
+label {
+    display: block;
+    margin-top: 0;
+}
+.checks label {
+    margin-top: 0;
+}
+label:first-of-type {
+    margin-top: 0;
+}
+input {
+padding: .5em;
+border: solid 1px #999;
+}
+input[type="name"], input[type="desitnation"], 
+input[type="budget"], input[type="things to do"]
+{ width: 15em;}
+
+textarea {
+    min-height: 8em;
+    min-width: 100%;
+    padding: .5em;
+    border: solid 1px #999;
+}
