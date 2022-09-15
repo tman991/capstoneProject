@@ -1,54 +1,30 @@
-const { default: axios } = require("axios");
-
+const travelData = require("./db.json")
+let globalId = 1
 
 module.exports = {
 
-    getCountry: (req, res) => {
-        const countries = ["Brazil", "Colombia", "Mexico"];
-      
-        // choose countries
-        let randomIndex = Math.floor(Math.random() * countries.length);
-        let randomCountries = countries[randomIndex];
-      
-        res.status(200).send(randomCompliment);
-    },
-
-
-    getName: (req, res) => {
-        const names = [""];    
-
-        let randomIndex = Math.floor(Math.random() * names.length);
-        let randomName = names[randomIndex];
-
-        res.status(200).send(randomName);
-
-    },
-
-
+    createData: (req, res) => {
+        console.log(req.body)
+        const { nameValue, destinationValue, budgetValue, thingsValue} = req.body
     
-    getAge: (req, res) => {
-        const age = ["20-30", "30-40", "40-50", "50-60", "Over 60"];    
+    let newTravelData = { 
 
-        let randomIndex = Math.floor(Math.random() * age.length);
-        let randomAge = age[randomIndex];
+        id: globalId,
+        nameValue, 
+        destinationValue,
+        budgetValue,
+        thingsValue
 
-        res.status(200).send(randomName);
+    }
 
-    },
+    travelData.push(newTravelData)
+    res.status(200).send(travelData)
+    globalId++
 
-} 
+    }
 
-getBudget: (req, res) => {
-    const budget = ["500 - 1000", "1000 - 2000", "2000 - 3000", "3000 - 4000"];    
-
-    let randomIndex = Math.floor(Math.random() * budget.length);
-    let randomBudget = budget[randomIndex];
-
-    res.status(200).send(randomBudget);
-
+   
 }
-
-
 
 
 

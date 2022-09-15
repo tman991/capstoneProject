@@ -3,15 +3,12 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
-app.use(express.json());
 
-const { getCountry, getName, getAge, getBudget } = require('./controller')
+const { createData } = require('./controller.js')
 
-app.get("/api/country", controller.getCountry);
-app.get("/api/name", controller.getName);
-app.get("/api/age", controller.getAge)
-app.get("/api/budget", controller.getBudget)
+app.post('/createData', createData)
 
-app.listen(4000, () => console.log("Server running on 4000"));
+app.listen(4005, () => console.log("Server running on 4005"));
